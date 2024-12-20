@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificação</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="{{ url_for('static', filename='baby.png') }}" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>🏆 Placar 🍼</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Ranking de Jogadores</h2>
+            {% if leaderboard %}
+                <ul>
+                    {% for player, score in leaderboard.items() %}
+                        <p>{{ player }}: {{ score }}</p>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Nenhuma pontuação registrada ainda!</p>
+            {% endif %}
+        </section>
+
+        <nav>
+            <a href="{{ url_for('home') }}">Voltar para a Página Inicial</a> |
+            <a href="{{ url_for('show_guesses') }}">Ver Lista de Chutes</a>
+        </nav>
+    </main> 
+
+    <footer>
+        <p>&copy; 2024 Jogo de Adivinhação de Gênero de Bebê</p>
+    </footer>
+</body>
+</html>

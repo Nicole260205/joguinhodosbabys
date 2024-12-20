@@ -1,0 +1,187 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #add2e4; /* Baby blue background */
+    color: #ffffff; /* White font */
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    min-height: 100vh; /* Full viewport height */
+    text-align: center; /* Centers text */
+    flex-direction: column; /* Stack items vertically */
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #f678a7; /* Dark pink color for header text */
+    margin-bottom: 20px;
+}
+
+main {
+    background-color: #ffffff; /* White background for content */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    color: #333; /* Neutral color for main content */
+    height: 100%; /* Ensure the content stretches to fill the container */
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #ffc0cb; /* Baby pink for section headings */
+    margin-bottom: 10px;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input, select, button {
+    margin: 5px 0 15px;
+    padding: 10px;
+    width: 100%;
+    border: 2px solid #ffc0cb; /* Baby pink border */
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #ffc0cb; /* Baby pink button */
+    color: #ffffff; /* White text */
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #ff69b4; /* Slightly darker pink on hover */
+}
+
+ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+ul li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+nav a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #ffc0cb; /* Baby pink links */
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #ffffff; /* White font for footer */
+}
+
+/* General Styles for List */
+ul.lista-chutes {
+    list-style: none;
+    margin-top: 10px;
+    padding: 0;
+    text-align: left; /* Align items to the left */
+    width: 100%;
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+}
+
+/* Style each list item */
+ul.lista-chutes li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #ffffff; /* White font for list items */
+    background-color: #333; /* Dark background for list items */
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    display: flex; /* Use flexbox for row layout */
+    justify-content: space-between; /* Space between columns */
+}
+
+/* Adding a border between columns */
+ul.lista-chutes li span {
+    padding: 0 10px;
+    border-right: 1px solid #555; /* Border between columns */
+}
+
+/* Remove border on the last column */
+ul.lista-chutes li span:last-child {
+    border-right: none;
+}
+
+
+/* Media Query for Small Screens (Phones) */
+@media only screen and (max-width: 600px) {
+    main {
+        width: 90%; /* Slightly smaller width */
+        max-width: 400px; /* Limiting width for a square-like appearance */
+        height: 90%; /* Adjust height for better fitting */
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 1.8rem; /* Smaller font size for header */
+    }
+
+    section {
+        margin: 10px 0; /* Reduce margin for sections */
+    }
+
+    button {
+        padding: 8px; /* Smaller button for better fit */
+    }
+
+    input, select {
+        padding: 8px; /* Smaller input/select fields */
+    }
+
+    ul li {
+        font-size: 1rem; /* Smaller list items */
+    }
+
+    nav a {
+        font-size: 1rem; /* Smaller font size for navigation links */
+    }
+     ul.lista-chutes {
+        width: 90%; /* Use most of the screen width */
+        max-width: 400px; /* Limit width for better fitting */
+        margin: 0 auto; /* Center the list */
+        padding: 10px;
+    }
+
+    ul.lista-chutes li {
+        font-size: 1rem; /* Slightly smaller text on mobile */
+        padding: 8px; /* Reduce padding for better fit */
+        margin: 8px 0; /* Reduce the margin between list items */
+        flex-direction: column; /* Stack items vertically on small screens */
+        align-items: center; /* Center align items vertically */
+    }
+
+    ul.lista-chutes li span {
+        border-right: none; /* No border on small screens */
+        padding: 5px 0; /* Adjust padding for vertical layout */
+    }
+}

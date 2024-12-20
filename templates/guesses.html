@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Chutes</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="{{ url_for('static', filename='baby.png') }}" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>🎯 Lista de Chutes 🍼</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Chutes e Resultados</h2>
+            {% if guesses %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Celebridade</th>
+                            <th>Jogador</th>
+                            <th>Chute</th>
+                            <th>Resultado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for guess in guesses %}
+                            <tr>
+                                <td>{{ guess['celebrity'] }}</td>
+                                <td>{{ guess['player'] }}</td>
+                                <td>{{ guess['guess'] }}</td>
+                                <td>
+                                    {% if guess['correct'] is none %}
+                                        Não Revelado
+                                    {% elif guess['correct'] %}
+                                        ✅ Correto
+                                    {% else %}
+                                        ❌ Errado
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Não há chutes registrados ainda.</p>
+            {% endif %}
+        </section>
+
+        <nav>
+            <a href="{{ url_for('home') }}">Voltar para a Página Inicial</a> |
+            <a href="{{ url_for('show_leaderboard') }}">Ver Classificação</a> 
+        </nav>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Jogo de Adivinhação de Gênero de Bebê</p>
+    </footer>
+</body>
+</html>

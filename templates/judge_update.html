@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juiz</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="{{ url_for('static', filename='baby.png') }}" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h1>⚖️ Atualização do Juiz</h1>
+    </header>
+
+    <main>
+        <!-- Section to update scores -->
+        <section>
+            <h2>Atualizar Pontuação</h2>
+            <form action="/update_scores" method="POST">
+                <!-- Player Selection -->
+                <label for="player">Nome do Jogador:</label>
+                <select id="player" name="player" required>
+                    {% for player_id, player_name in leaderboard.items() %}
+                        <option value="{{ player_id }}">{{ player_name }}</option>
+                    {% endfor %}
+                </select>
+
+                <!-- Points Input -->
+                <label for="points">Pontuação:</label>
+                <input type="number" id="points" name="points" min="0" step="1" required>
+
+                <!-- Submit Button -->
+                <button type="submit">Atualizar Pontuação</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <!-- Section to add new celebrities -->
+        <section>
+            <h2>Adicionar Nova Celebridade</h2>
+            <form action="/add_celebrity" method="POST">
+                <!-- Celebrity Name Input -->
+                <label for="name">Nome da Celebridade:</label>
+                <input type="text" id="name" name="name" maxlength="100" required>
+
+                <!-- Submit Button -->
+                <button type="submit">Adicionar Celebridade</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <!-- Section to update baby's gender -->
+        <section>
+            <h2>Atualizar Gênero do Bebê</h2>
+            <form action="/update_gender" method="POST">
+                <!-- Celebrity Selection -->
+                <label for="celebrity">Nome da Celebridade:</label>
+                <select id="celebrity" name="celebrity" required>
+                    <!-- Iterating over the list of celebrities -->
+                    {% for celebrity in celebrities %}
+                        <option value="{{ celebrity.id }}">{{ celebrity.name }}</option>
+                    {% endfor %}
+                </select>
+
+                <!-- Gender Selection -->
+                <label for="gender">Gênero:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">Masculino</option>
+                    <option value="female">Feminino</option>
+                </select>
+
+                <!-- Submit Button -->
+                <button type="submit">Atualizar Gênero</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <!-- Section to display the current list of celebrities -->
+        <section>
+            <h2>Celebridades Atuais</h2>
+            <ul>
+                {% for celebrity in celebrities %}
+                    <li>{{ celebrity.name }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <hr>
+
+        <!-- Navigation -->
+        <nav>
+            <a href="{{ url_for('home') }}">Voltar para a Página Inicial</a>
+        </nav>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Jogo de Adivinhação de Gênero de Bebê</p>
+    </footer>
+</body>
+</html>

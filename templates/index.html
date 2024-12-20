@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joguinho de Adivinhação</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="{{ url_for('static', filename='baby.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/baby.png" type="image/x-icon">
+    
+</head>
+<body>
+    <header>
+        <h1>🍼 Jogo de Adivinhação de Gênero de Bebê 🥳</h1>
+    </header>
+
+    <main>
+<section>
+    <h2>Façam seus Chutes</h2>
+    <!-- Player 1 Form -->
+    <div id="player1" class="player-form">
+        <h3>Carina</h3>
+        <form method="POST" action="{{ url_for('submit_guess') }}">
+            <label for="celebrity">Celebridade:</label>
+            <select name="celebrity" required>
+                {% for celebrity in celebrities %}
+                    <option value="{{ loop.index }}">{{ celebrity['name'] }}</option>
+                {% endfor %}
+            </select>
+            <label for="gender">Chute:</label>
+            <select name="gender" required>
+                <option value="boy">Menino 👦</option>
+                <option value="girl">Menina 👧</option>
+            </select>
+            <input type="hidden" name="player" value="Player 1">
+            <button type="submit">Enviar 🚀</button>
+        </form>
+    </div>
+
+    <!-- Player 2 Form -->
+    <div id="player2" class="player-form">
+        <h3>Maria Luiza</h3>
+        <form method="POST" action="{{ url_for('submit_guess') }}">
+            <label for="celebrity">Celebridade:</label>
+            <select name="celebrity" required>
+                {% for celebrity in celebrities %}
+                    <option value="{{ loop.index }}">{{ celebrity['name'] }}</option>
+                {% endfor %}
+            </select>
+            <label for="gender">Chute:</label>
+            <select name="gender" required>
+                <option value="boy">Menino 👦</option>
+                <option value="girl">Menina 👧</option>
+            </select>
+            <input type="hidden" name="player" value="Player 2">
+            <button type="submit">Enviar 🚀</button>
+        </form>
+    </div>
+</section>
+
+
+        <nav>
+            <a href="{{ url_for('show_guesses') }}">Ver Lista de Chutes</a> | 
+            <a href="{{ url_for('show_leaderboard') }}">Ver Classificação</a> |
+            <a href="{{ url_for('judge_update') }}">Juiz</a>
+        </nav>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Jogo de Adivinhação de Gênero de Bebê</p>
+    </footer>
+</body>
+</html>
